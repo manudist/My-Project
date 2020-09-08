@@ -4,10 +4,8 @@ import com.mtm.RestWS.service.MangaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 
@@ -16,7 +14,7 @@ public class MangaController {
 
     @Autowired
     private MangaService mangaService;
-    public static Logger logger = LoggerFactory.getLogger(MangaController.class);
+    private final Logger logger = LoggerFactory.getLogger(MangaController.class);
 
 
     @GetMapping("/manga")
@@ -28,5 +26,10 @@ public class MangaController {
     public Manga createManga(@RequestBody Manga mangaToCreate){
         logger.info("createManga");
         return mangaService.saveManga(mangaToCreate);
+    }
+    @GetMapping("/manga/{title}")
+    public Manga getMangaByTitle (@PathVariable String title){
+        logger.info("getMangaByTitle");
+        return mangaService.getMangaFromTitle(title);
     }
 }

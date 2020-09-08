@@ -1,6 +1,5 @@
 package com.mtm.RestWS.service;
 
-import com.mtm.RestWS.controller.AuthorController;
 import com.mtm.RestWS.model.Manga;
 import com.mtm.RestWS.repository.MangaRepository;
 import org.slf4j.Logger;
@@ -13,7 +12,7 @@ import java.util.List;
 @Service
 public class MangaService {
 
-    private Logger logger = LoggerFactory.getLogger(MangaService.class);
+    private final Logger logger = LoggerFactory.getLogger(MangaService.class);
 
     /*
     private final List<Manga> mangaList = new ArrayList<>();

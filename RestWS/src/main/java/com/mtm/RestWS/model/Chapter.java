@@ -1,24 +1,38 @@
 package com.mtm.RestWS.model;
 
 import javax.persistence.*;
+import java.util.Calendar;
 import java.util.UUID;
 
 @Entity
-public class Chapter {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+public class Chapter extends BaseEntity {
+
     private String name;
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(optional = false)
     private Manga manga;
+    @ManyToOne()
+    private Volume volume;
     private int chapterNumber;
     private int rows;
 
-    public Chapter(UUID id, String name, int chapterNumber, int rows) {
-        this.id = id;
+    public Chapter(UUID id, Calendar creationDate, Calendar modificationDate, String name, Manga manga, Volume volume, int chapterNumber, int rows) {
+        super(id, creationDate, modificationDate);
         this.name = name;
+        this.manga = manga;
+        this.volume = volume;
         this.chapterNumber = chapterNumber;
         this.rows = rows;
+    }
+
+    public Chapter() {
+    }
+
+    public Volume getVolume() {
+        return volume;
+    }
+
+    public void setVolume(Volume volume) {
+        this.volume = volume;
     }
 
     public Manga getManga() {
@@ -29,13 +43,6 @@ public class Chapter {
         this.manga = manga;
     }
 
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

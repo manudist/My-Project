@@ -1,22 +1,23 @@
 package com.mtm.RestWS.model;
-import com.mtm.RestWS.controller.MangaController;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.mtm.RestWS.controller.VolumeController;
+
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
 
 @Entity
 @Table(name = "manga")
-public class Manga{
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+public class Manga extends BaseEntity {
+
     private String title;
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(/*cascade = {CascadeType.PERSIST,CascadeType.MERGE},*/ optional = false)
     private Author author;
+    @JsonIgnore
     @OneToMany(mappedBy = "manga")
     private List<Chapter> chapterList;
     private String description;
@@ -24,9 +25,11 @@ public class Manga{
     private Double score;
 
 
-    public Manga(String title, Author author, String description, Instant publicationDate, Double score) {
+    public Manga(UUID id, Calendar creationDate, Calendar modificationDate, String title, Author author, List<Chapter> chapterList, String description, Instant publicationDate, Double score) {
+        super(id, creationDate, modificationDate);
         this.title = title;
         this.author = author;
+        this.chapterList = chapterList;
         this.description = description;
         this.publicationDate = publicationDate;
         this.score = score;
@@ -44,62 +47,53 @@ public class Manga{
     }
 
     public Author getAuthor() {
-        MangaController.logger.info("getAuthor");
+        //VolumeController.logger.info("getAuthor");
         return author;
     }
 
     public void setAuthor(Author author) {
-        MangaController.logger.info("setAuthor");
+        // VolumeController.logger.info("setAuthor");
         this.author = author;
     }
 
-    public UUID getId() {
-        MangaController.logger.info("getId");
-        return id;
-    }
-
-    public void setId(UUID id) {
-        MangaController.logger.info("setId");
-        this.id = id;
-    }
 
     public String getTitle() {
-        MangaController.logger.info("getTitle");
+        // VolumeController.logger.info("getTitle");
         return title;
     }
 
     public void setTitle(String title) {
-        MangaController.logger.info("setTitle");
+        // VolumeController.logger.info("setTitle");
         this.title = title;
     }
 
     public String getDescription() {
-        MangaController.logger.info("getDescription");
+        // VolumeController.logger.info("getDescription");
         return description;
     }
 
     public void setDescription(String description) {
-        MangaController.logger.info("setDescription");
+        // VolumeController.logger.info("setDescription");
         this.description = description;
     }
 
     public Instant getPublicationDate() {
-        MangaController.logger.info("getPublicationDate");
+        // VolumeController.logger.info("getPublicationDate");
         return publicationDate;
     }
 
     public void setPublicationDate(Instant publicationDate) {
-        MangaController.logger.info("setPublicationDate");
-        this.publicationDate= publicationDate;
+        //  VolumeController.logger.info("setPublicationDate");
+        this.publicationDate = publicationDate;
     }
 
     public Double getScore() {
-        MangaController. logger.info("getScore");
+        //  VolumeController. logger.info("getScore");
         return score;
     }
 
     public void setScore(Double score) {
-        MangaController.logger.info("setScore");
+        // VolumeController.logger.info("setScore");
         this.score = score;
     }
 }
