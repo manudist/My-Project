@@ -14,6 +14,8 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 
+import javax.annotation.security.RolesAllowed;
+
 @RestController
 public class ConsumeServiceController {
     @Autowired
@@ -21,6 +23,7 @@ public class ConsumeServiceController {
     @Autowired
     private AsyncHttpTester async;
     private final Logger logger= LoggerFactory.getLogger(ConsumeServiceController.class);
+
 
     @GetMapping("/consume")
    // @Scheduled(cron = "0 0/1 * * * *")
@@ -31,6 +34,7 @@ public class ConsumeServiceController {
         return manga;
     }
 
+
     @GetMapping("/consumeAuthor")
     //@Scheduled(cron = "0 0/2 * * * *")
     public Author consumeAuthor() {
@@ -39,12 +43,13 @@ public class ConsumeServiceController {
         logger.info("Recuperato autore: "+ author.getName());
         return author;
     }
+
     @GetMapping("/consumeWebClient")
     public Flux<Manga> consumeWebClient() {
       return async.getAsyncManga("Test");
     }
 
-    @GetMapping("/consumeAuthorWebClient")
+     @GetMapping("/consumeAuthorWebClient")
     public Flux<Author> consumeAuthorWebClient() {
 
         return async.getAsyncAuthor("Test");

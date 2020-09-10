@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 
@@ -22,7 +23,7 @@ public class AuthorController {
         logger.info("getAuthorList");
         return authorService.getAuthorList();
     }
-
+    @RolesAllowed("ADMIN")
     @PostMapping("/author")
     public Author createAuthor(@RequestBody Author authorToCreate) {
         logger.info("createAuthor");

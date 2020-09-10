@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 @RestController
 public class ChapterController {
@@ -23,6 +24,7 @@ public class ChapterController {
         logger.info("getChapterList");
         return chapterService.getChapterList();
     }
+    @RolesAllowed("ADMIN")
     @PostMapping("/chapter")
     public Chapter createChapter(@RequestBody Chapter chapterToCreate){
         logger.info("createChapter");

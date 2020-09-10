@@ -4,8 +4,9 @@ import com.mtm.RestWS.service.MangaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -23,14 +24,17 @@ public class MangaController {
         logger.info("getMangaList");
         return mangaService.getMangaList();
     }
+
+    //@RolesAllowed("ADMIN")
     @PostMapping("/manga")
     public Manga createManga(@RequestBody Manga mangaToCreate){
         logger.info("createManga");
         return mangaService.saveManga(mangaToCreate);
     }
+
     @GetMapping("/manga/{title}")
     public Manga getMangaByTitle (@PathVariable String title) throws InterruptedException {
-       Thread.sleep(10000);
+       //Thread.sleep(10000);
         logger.info("getMangaByTitle");
         return mangaService.getMangaFromTitle(title);
     }
