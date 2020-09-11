@@ -1,7 +1,7 @@
-package com.mtm.RestWS.model;
+package com.mtm.library.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.mtm.RestWS.controller.VolumeController;
+
 
 import javax.persistence.*;
 import java.time.Instant;

@@ -1,5 +1,5 @@
 package com.mtm.RestWS.repository;
-import com.mtm.RestWS.model.Author;
+import com.mtm.library.model.Author;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.UUID;

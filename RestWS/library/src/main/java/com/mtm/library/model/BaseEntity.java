@@ -1,4 +1,4 @@
-package com.mtm.RestWS.model;
+package com.mtm.library.model;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;

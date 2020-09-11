@@ -1,6 +1,5 @@
 package com.mtm.RestWS.service;
-import com.mtm.RestWS.controller.ChapterController;
-import com.mtm.RestWS.model.Chapter;
+import com.mtm.library.model.Chapter;
 import com.mtm.RestWS.repository.ChapterRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

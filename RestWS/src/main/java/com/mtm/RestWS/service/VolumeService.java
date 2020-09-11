@@ -1,7 +1,7 @@
 package com.mtm.RestWS.service;
 
 import com.mtm.RestWS.controller.VolumeController;
-import com.mtm.RestWS.model.Volume;
+import com.mtm.library.model.Volume;
 import com.mtm.RestWS.repository.VolumeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

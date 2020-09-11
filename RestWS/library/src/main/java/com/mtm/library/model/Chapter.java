@@ -1,4 +1,4 @@
-package com.mtm.RestWS.model;
+package com.mtm.library.model;
 
 import javax.persistence.*;
 import java.util.Calendar;

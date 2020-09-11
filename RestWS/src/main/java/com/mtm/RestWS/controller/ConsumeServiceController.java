@@ -1,20 +1,15 @@
 package com.mtm.RestWS.controller;
 
-import com.mtm.RestWS.model.Author;
-import com.mtm.RestWS.model.Manga;
+
 import com.mtm.RestWS.tools.AsyncHttpTester;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
-
-import javax.annotation.security.RolesAllowed;
 
 @RestController
 public class ConsumeServiceController {

@@ -1,7 +1,7 @@
 package com.mtm.RestWS.service;
 
 import com.mtm.RestWS.controller.AuthorController;
-import com.mtm.RestWS.model.Author;
+import com.mtm.library.model.Author;
 import com.mtm.RestWS.repository.AuthorRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

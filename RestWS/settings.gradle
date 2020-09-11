@@ -1,1 +1,3 @@
 rootProject.name = 'RestWS'
+
+include 'library'

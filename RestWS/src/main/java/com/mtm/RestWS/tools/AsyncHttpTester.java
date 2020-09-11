@@ -1,6 +1,6 @@
 package com.mtm.RestWS.tools;
-import com.mtm.RestWS.model.Author;
-import com.mtm.RestWS.model.Manga;
+import com.mtm.library.model.Author;
+import com.mtm.library.model.Manga;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 

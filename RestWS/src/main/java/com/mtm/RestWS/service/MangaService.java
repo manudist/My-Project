@@ -1,6 +1,6 @@
 package com.mtm.RestWS.service;
 
-import com.mtm.RestWS.model.Manga;
+import com.mtm.library.model.Manga;
 import com.mtm.RestWS.repository.MangaRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
