@@ -1,6 +1,6 @@
 package com.mtm.RestWS.controller;
-import com.mtm.library.model.Manga;
 import com.mtm.RestWS.service.MangaService;
+import com.mtm.library.model.Manga;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,14 +8,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 public class MangaController {
 
-    @Autowired
-    private MangaService mangaService;
     private final Logger logger = LoggerFactory.getLogger(MangaController.class);
 
+    @Autowired
+    private MangaService mangaService;
 
     @GetMapping("/manga")
     public List<Manga> getMangaList() {
@@ -23,7 +22,6 @@ public class MangaController {
         return mangaService.getMangaList();
     }
 
-    //@RolesAllowed("ADMIN")
     @PostMapping("/manga")
     public Manga createManga(@RequestBody Manga mangaToCreate){
         logger.info("createManga");

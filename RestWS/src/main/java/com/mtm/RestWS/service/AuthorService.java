@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class AuthorService {
 
-    private Logger logger = LoggerFactory.getLogger(AuthorController.class);
+    private final Logger logger = LoggerFactory.getLogger(AuthorController.class);
 
     @Autowired
     private AuthorRepository authorRepository;

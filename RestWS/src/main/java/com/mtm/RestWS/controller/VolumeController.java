@@ -12,17 +12,17 @@ import java.util.List;
 @RestController
 public class VolumeController {
 
-    @Autowired
-    private VolumeService volumeService;
     private final Logger logger = LoggerFactory.getLogger(VolumeController.class);
 
+    @Autowired
+    private VolumeService volumeService;
 
     @GetMapping("/volume")
     public List<Volume> getVolumeList() {
         logger.info("getVolumeList");
         return volumeService.getVolumeList();
     }
-    @RolesAllowed("ADMIN")
+
     @PostMapping("/volume")
     public Volume createVolume(@RequestBody Volume volumeToCreate){
         logger.info("createVolume");

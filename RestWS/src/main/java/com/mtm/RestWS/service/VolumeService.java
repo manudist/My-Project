@@ -18,11 +18,9 @@ public class VolumeService {
     @Autowired
     private VolumeRepository volumeRepository;
 
-
     public List<Volume> getVolumeList() {
         return volumeRepository.findAll();
     }
-
 
     public Volume saveVolume(Volume volumeToBeSaved) {
         return volumeRepository.save(volumeToBeSaved);

@@ -1,7 +1,6 @@
 package com.mtm.RestWS.controller;
 
 import com.mtm.library.model.Author;
-import com.mtm.library.model.Manga;
 import com.mtm.RestWS.service.AuthorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,16 +13,17 @@ import java.util.List;
 
 @RestController
 public class AuthorController {
+
+    private final Logger logger = LoggerFactory.getLogger(AuthorController.class);
+
     @Autowired
     private AuthorService authorService;
-    private Logger logger = LoggerFactory.getLogger(AuthorController.class);
 
     @GetMapping("/author")
     public List<Author> getAuthorList() {
         logger.info("getAuthorList");
         return authorService.getAuthorList();
     }
-    @RolesAllowed("ADMIN")
     @PostMapping("/author")
     public Author createAuthor(@RequestBody Author authorToCreate) {
         logger.info("createAuthor");
