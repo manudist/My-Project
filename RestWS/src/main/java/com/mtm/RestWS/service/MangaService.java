@@ -14,19 +14,6 @@ public class MangaService {
 
     private final Logger logger = LoggerFactory.getLogger(MangaService.class);
 
-    /*
-    private final List<Manga> mangaList = new ArrayList<>();
-
-    @PostConstruct
-    private void init() {
-        Manga newManga = new Manga("Test", "Manuel", "Il mio primo manga", Instant.now(), 8.5);
-        mangaList.add(newManga);
-    }
-
-    public List<Manga> getMangaList() {
-        return mangaList;
-        }
-     */
     @Autowired
     private MangaRepository mangaRepository;
 

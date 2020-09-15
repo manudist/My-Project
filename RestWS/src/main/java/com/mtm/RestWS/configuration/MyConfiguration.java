@@ -10,10 +10,12 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 @Configuration
 public class MyConfiguration {
+
     @Bean
     public AsyncHttpTester getAsyncHttpTest(){
         return new AsyncHttpTester();
     }
+
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)

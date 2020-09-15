@@ -1,7 +1,8 @@
 package com.mtm.RestWS.controller;
 
-
 import com.mtm.RestWS.tools.AsyncHttpTester;
+import com.mtm.library.model.Author;
+import com.mtm.library.model.Manga;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +14,14 @@ import reactor.core.publisher.Flux;
 
 @RestController
 public class ConsumeServiceController {
-    @Autowired
-    private RestTemplateBuilder restTemplateBuilder;
-    @Autowired
-    private AsyncHttpTester async;
+
     private final Logger logger= LoggerFactory.getLogger(ConsumeServiceController.class);
 
+    @Autowired
+    private RestTemplateBuilder restTemplateBuilder;
+
+    @Autowired
+    private AsyncHttpTester async;
 
     @GetMapping("/consume")
    // @Scheduled(cron = "0 0/1 * * * *")
@@ -46,7 +49,6 @@ public class ConsumeServiceController {
 
      @GetMapping("/consumeAuthorWebClient")
     public Flux<Author> consumeAuthorWebClient() {
-
         return async.getAsyncAuthor("Test");
     }
 }

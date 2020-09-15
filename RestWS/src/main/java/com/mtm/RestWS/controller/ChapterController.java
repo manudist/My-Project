@@ -14,10 +14,11 @@ import javax.annotation.security.RolesAllowed;
 import java.util.List;
 @RestController
 public class ChapterController {
-    @Autowired
-    private ChapterService chapterService;
+
     public static Logger logger = LoggerFactory.getLogger(ChapterController.class);
 
+    @Autowired
+    private ChapterService chapterService;
 
     @GetMapping("/chapter")
     public List<Chapter> getChapterList() {
