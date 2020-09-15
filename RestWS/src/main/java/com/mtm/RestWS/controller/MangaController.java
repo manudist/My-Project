@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 public class MangaController {
@@ -28,10 +30,18 @@ public class MangaController {
         return mangaService.saveManga(mangaToCreate);
     }
 
-    @GetMapping("/manga/{title}")
+    @GetMapping("/manga/{id}")
+    public Optional<Manga> getMangaById (@PathVariable UUID id) throws InterruptedException {
+        //Thread.sleep(10000);
+        logger.info("getMangaById");
+        return mangaService.getMangaById(id);
+    }
+
+   /* @GetMapping("/manga/{title}")
     public Manga getMangaByTitle (@PathVariable String title) throws InterruptedException {
        //Thread.sleep(10000);
         logger.info("getMangaByTitle");
         return mangaService.getMangaFromTitle(title);
     }
+    */
 }

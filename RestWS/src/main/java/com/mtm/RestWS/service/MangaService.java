@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class MangaService {
@@ -26,6 +28,11 @@ public class MangaService {
         logger.info("getMangaFromTitle");
         return mangaRepository.findMangaByTitle(title);
     }
+    public Optional<Manga> getMangaById(UUID id) {
+        logger.info("getMangaFromId");
+        return mangaRepository.findById(id);
+    }
+
 
     public Manga saveManga(Manga mangaToBeSaved) {
         return mangaRepository.save(mangaToBeSaved);
