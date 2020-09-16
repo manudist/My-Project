@@ -17,8 +17,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/consume*","/consume*/*").hasAnyRole("ADMIN","USER")
-                .antMatchers(HttpMethod.POST,"/manga","/manga/*").hasRole("ADMIN")
+                //.antMatchers("/consume*","/consume*/*").hasAnyRole("ADMIN","USER")
+                //.antMatchers(HttpMethod.POST,"/manga","/manga/*").hasRole("ADMIN")
                 .anyRequest().permitAll()
                 .and().httpBasic()
                 .and().headers().cacheControl().disable()

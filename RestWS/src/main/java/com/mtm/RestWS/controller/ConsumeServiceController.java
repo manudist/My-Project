@@ -15,7 +15,7 @@ import reactor.core.publisher.Flux;
 @RestController
 public class ConsumeServiceController {
 
-    private final Logger logger= LoggerFactory.getLogger(ConsumeServiceController.class);
+    private final Logger logger = LoggerFactory.getLogger(ConsumeServiceController.class);
 
     @Autowired
     private RestTemplateBuilder restTemplateBuilder;
@@ -24,30 +24,34 @@ public class ConsumeServiceController {
     private AsyncHttpTester async;
 
     @GetMapping("/consume")
-   // @Scheduled(cron = "0 0/1 * * * *")
+    // @Scheduled(cron = "0 0/1 * * * *")
     public Manga consume() {
         RestTemplate restTemplate = restTemplateBuilder.build();
         Manga manga = restTemplate.getForObject("http://localhost:8080/manga/Test", Manga.class);
-        logger.info("Recuperato manga: "+ manga.getTitle());
+        logger.info("Recuperato manga: " + manga.getTitle());
         return manga;
     }
 
+    @GetMapping("/consumeMangaList")
+    public Flux<Manga> consumeMangaList() {
+        return async.getAsyncMangaList();
+    }
 
     @GetMapping("/consumeAuthor")
     //@Scheduled(cron = "0 0/2 * * * *")
     public Author consumeAuthor() {
         RestTemplate restTemplate = restTemplateBuilder.build();
         Author author = restTemplate.getForObject("http://localhost:8080/author/Test", Author.class);
-        logger.info("Recuperato autore: "+ author.getName());
+        logger.info("Recuperato autore: " + author.getName());
         return author;
     }
 
     @GetMapping("/consumeWebClient")
     public Flux<Manga> consumeWebClient() {
-      return async.getAsyncManga("Test");
+        return async.getAsyncManga("Test");
     }
 
-     @GetMapping("/consumeAuthorWebClient")
+    @GetMapping("/consumeAuthorWebClient")
     public Flux<Author> consumeAuthorWebClient() {
         return async.getAsyncAuthor("Test");
     }

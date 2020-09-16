@@ -16,6 +16,11 @@ public class AsyncHttpTester {
         return webClient.get().uri("manga/" + title).retrieve().bodyToFlux(Manga.class);
     }
 
+    public Flux<Manga> getAsyncMangaList () {
+        return webClient.get().uri("manga").retrieve().bodyToFlux(Manga.class);
+    }
+
+
     public Flux<Author> getAsyncAuthor(String name) {
         return webClient.get().uri("author/" + name).retrieve().bodyToFlux(Author.class);
     }
