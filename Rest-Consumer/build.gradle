@@ -13,6 +13,7 @@ repositories {
 }
 
 dependencies {
+	implementation project(':event')
 	compile files ('libs/library-0.0.1-SNAPSHOT.jar')
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {

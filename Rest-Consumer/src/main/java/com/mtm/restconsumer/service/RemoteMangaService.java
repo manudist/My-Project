@@ -1,11 +1,9 @@
 package com.mtm.restconsumer.service;
-
 import com.mtm.library.model.Manga;
-import com.mtm.restconsumer.tools.EventManager;
+import com.mtm.event.EventManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.ApplicationEvent;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
@@ -27,7 +25,18 @@ public class RemoteMangaService {
     }
     @PostConstruct
     public void init(){
-        eventManager.listenEvent(event -> {logger.info("received event : "+ event.toString());});
+        eventManager.subscribeToEvent(myEvent -> logger.info("received event : "+ myEvent.toString())
+                ,"update");
+        eventManager.subscribeToEvent(myEvent -> logger.info("received event 2 : "+ myEvent.toString())
+                ,"update");
+        eventManager.subscribeToEvent(myEvent -> logger.info("received event 3 : "+ myEvent.toString())
+                ,"update");
+        eventManager.consumeEvent(myEvent -> logger.info("received event : "+ myEvent.toString())
+                ,"update");
+        eventManager.consumeEvent(myEvent -> logger.info("received event 2 : "+ myEvent.toString())
+                ,"update");
+        eventManager.consumeEvent(myEvent -> logger.info("received event 3 : "+ myEvent.toString())
+                ,"update");
     }
 
     public Flux<Manga> getMangaList() {

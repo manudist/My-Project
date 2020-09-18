@@ -1,1 +1,3 @@
 rootProject.name = 'Rest-Consumer'
+
+include 'event'
