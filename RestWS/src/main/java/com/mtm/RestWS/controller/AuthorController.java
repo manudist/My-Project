@@ -6,8 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.security.RolesAllowed;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -33,6 +32,11 @@ public class AuthorController {
     public Author getAuthorByName (@PathVariable String name){
         logger.info("getAuthorByName");
         return authorService.getAuthorFromName(name);
+    }
+    @GetMapping("/authorplace/{birthplace}")
+    public Collection<Author> getAuthorFromPlace(@PathVariable String birthplace) {
+        logger.info("getAuthorFromPlace");
+        return authorService.getAuthorFromPlace(birthplace);
     }
 }
 

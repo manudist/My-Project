@@ -1,4 +1,5 @@
 package com.mtm.RestWS.service;
+import com.mtm.library.model.Author;
 import com.mtm.library.model.Chapter;
 import com.mtm.RestWS.repository.ChapterRepository;
 import org.slf4j.Logger;
@@ -6,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -16,6 +18,9 @@ public class ChapterService {
     @Autowired
     private ChapterRepository chapterRepository;
 
+    public Collection<Chapter> getChapterFromNumber(int chapterNumber) {
+        return chapterRepository.getChapterFromNumber(chapterNumber);
+    }
 
     public List<Chapter> getChapterList() {
         return chapterRepository.findAll();
@@ -30,4 +35,5 @@ public class ChapterService {
         return chapterRepository.save(chapterToBeSaved);
     }
 }
+
 
