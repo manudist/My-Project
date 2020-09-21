@@ -1,4 +1,5 @@
 package com.mtm.RestWS.controller;
+import com.mtm.RestWS.exception.ResourceNotFoundException;
 import com.mtm.RestWS.service.MangaService;
 import com.mtm.library.model.Manga;
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Supplier;
 
 @RestController
 public class MangaController {
@@ -32,10 +34,10 @@ public class MangaController {
     }
 
     @GetMapping("/manga/{id}")
-    public Optional<Manga> getMangaById (@PathVariable UUID id) throws InterruptedException {
+    public Manga getMangaById (@PathVariable UUID id) throws Throwable {
         //Thread.sleep(10000);
         logger.info("getMangaById");
-        return mangaService.getMangaById(id);
+        return mangaService.getMangaById(id).orElseThrow((Supplier<Throwable>) ResourceNotFoundException::new);
     }
 
     @GetMapping("/mangascore/{score}")

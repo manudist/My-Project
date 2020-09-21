@@ -1,4 +1,5 @@
 package com.mtm.event;
+
 import com.mtm.event.model.MyEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +14,7 @@ import java.util.function.Consumer;
 
 
 @Component
-public class EventManager implements ApplicationListener<MyEvent>{
+public class EventManager implements ApplicationListener<MyEvent>, com.mtm.event.api.EventManager {
     private final Logger logger = LoggerFactory.getLogger(EventManager.class);
     private final ApplicationEventPublisher applicationEventPublisher;
     private final HashMap<String, List<Consumer<MyEvent>>> subscribersMap;
@@ -41,6 +42,7 @@ public class EventManager implements ApplicationListener<MyEvent>{
 
     }
 
+    @Override
     public void subscribeToEvent(Consumer<MyEvent> eventConsumer, String topic) {
         //controllo che la chiave sia presente e che la lista associata non sia null
         if (!subscribersMap.containsKey(topic) || subscribersMap.get(topic) == null) {
@@ -48,6 +50,8 @@ public class EventManager implements ApplicationListener<MyEvent>{
         }
         subscribersMap.get(topic).add(eventConsumer);
     }
+
+    @Override
     public void consumeEvent(Consumer<MyEvent> eventConsumer, String topic) {
         //controllo che la chiave sia presente e che la lista associata non sia null
         if (!consumersMap.containsKey(topic) || consumersMap.get(topic) == null) {
@@ -57,7 +61,7 @@ public class EventManager implements ApplicationListener<MyEvent>{
     }
 
 
-
+    @Override
     public void publishEvent(MyEvent myEvent) {
         logger.info("sending event : " + myEvent.toString());
         applicationEventPublisher.publishEvent(myEvent);

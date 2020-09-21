@@ -24,7 +24,6 @@ public class ChapterController {
         logger.info("getChapterList");
         return chapterService.getChapterList();
     }
-    @RolesAllowed("ADMIN")
     @PostMapping("/chapter")
     public Chapter createChapter(@RequestBody Chapter chapterToCreate){
         logger.info("createChapter");

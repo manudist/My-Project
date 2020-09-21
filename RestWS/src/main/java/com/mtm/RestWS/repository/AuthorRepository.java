@@ -7,13 +7,14 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
+import java.util.Optional;
 import java.util.UUID;
 
 
 @Repository
 public interface AuthorRepository extends JpaRepository<Author, UUID> {
 
-    Author findAuthorByName(String name);
+    Optional<Author> findAuthorByName(String name);
     @Query("SELECT author FROM Author author WHERE author.birthplace = :birthplace")
     Collection<Author> getAuthorFromPlace(@Param("birthplace") String birthplace);
 

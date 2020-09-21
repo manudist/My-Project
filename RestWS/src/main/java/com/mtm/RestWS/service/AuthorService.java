@@ -11,11 +11,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AuthorService {
 
-    private final Logger logger = LoggerFactory.getLogger(AuthorController.class);
+    private final Logger logger = LoggerFactory.getLogger(AuthorService.class);
 
     @Autowired
     private AuthorRepository authorRepository;
@@ -28,7 +29,7 @@ public class AuthorService {
         return authorRepository.findAll();
     }
 
-    public Author getAuthorFromName(String name) {
+    public Optional<Author> getAuthorFromName(String name) {
         logger.info("getAuthorFromName");
         return authorRepository.findAuthorByName(name);
     }
