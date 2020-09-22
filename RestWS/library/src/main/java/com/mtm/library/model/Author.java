@@ -3,6 +3,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.Calendar;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "author")
-public class Author extends BaseEntity{
+public class Author extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "author")
     @JsonIgnore
     private List<Manga> mangaList;

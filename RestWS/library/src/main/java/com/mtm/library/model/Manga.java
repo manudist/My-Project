@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.Calendar;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "manga")
-public class Manga extends BaseEntity {
+public class Manga extends BaseEntity implements Serializable {
 
     private String title;
     @ManyToOne(/*cascade = {CascadeType.PERSIST,CascadeType.MERGE},*/ optional = false)
