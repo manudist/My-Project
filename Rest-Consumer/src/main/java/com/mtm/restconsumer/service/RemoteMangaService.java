@@ -1,6 +1,7 @@
 package com.mtm.restconsumer.service;
-import com.mtm.library.model.Manga;
+
 import com.mtm.event.EventManager;
+import com.mtm.library.model.Manga;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,20 +29,21 @@ public class RemoteMangaService implements MessageListener {
         client = WebClient.create(url);
         this.eventManager = eventManager;
     }
+
     @PostConstruct
-    public void init(){
-        eventManager.subscribeToEvent(myEvent -> logger.info("received event : "+ myEvent.toString())
-                ,"update");
-        eventManager.subscribeToEvent(myEvent -> logger.info("received event 2 : "+ myEvent.toString())
-                ,"update");
-        eventManager.subscribeToEvent(myEvent -> logger.info("received event 3 : "+ myEvent.toString())
-                ,"update");
-        eventManager.consumeEvent(myEvent -> logger.info("received event : "+ myEvent.toString())
-                ,"update");
-        eventManager.consumeEvent(myEvent -> logger.info("received event 2 : "+ myEvent.toString())
-                ,"update");
-        eventManager.consumeEvent(myEvent -> logger.info("received event 3 : "+ myEvent.toString())
-                ,"update");
+    public void init() {
+        eventManager.subscribeToEvent(myEvent -> logger.info("received event : " + myEvent.toString())
+                , "update");
+        eventManager.subscribeToEvent(myEvent -> logger.info("received event 2 : " + myEvent.toString())
+                , "update");
+        eventManager.subscribeToEvent(myEvent -> logger.info("received event 3 : " + myEvent.toString())
+                , "update");
+        eventManager.consumeEvent(myEvent -> logger.info("received event : " + myEvent.toString())
+                , "update");
+        eventManager.consumeEvent(myEvent -> logger.info("received event 2 : " + myEvent.toString())
+                , "update");
+        eventManager.consumeEvent(myEvent -> logger.info("received event 3 : " + myEvent.toString())
+                , "update");
     }
 
     public static List<String> messageList = new ArrayList<String>();

@@ -2,19 +2,18 @@ package com.mtm.messages.subscriber;
 
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-@Service
+//@Service
 public class RedisSubscriber implements MessageListener {
 
     private final List<Consumer<Message>> consumerList;
 
     public RedisSubscriber() {
-        consumerList= new ArrayList<>();
+        consumerList = new ArrayList<>();
     }
 
     public List<Consumer<Message>> getConsumerList() {
