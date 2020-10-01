@@ -1,10 +1,10 @@
 plugins {
-	id 'org.springframework.boot' version '2.3.3.RELEASE'
+	id 'org.springframework.boot' version '2.3.4.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
 }
 
-group = 'com.mtm'
+group = 'com.NewWs'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
@@ -14,15 +14,13 @@ repositories {
 
 dependencies {
 	compile files ('libs/messages-0.0.2.jar')
-	compile files ('libs/library-0.0.1-SNAPSHOT.jar')
-	compile files ('libs/model-0.0.1-SNAPSHOT.jar')
 	compile files ('libs/event-0.0.1.jar')
-	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation project(':model')
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
-	testImplementation 'io.projectreactor:reactor-test'
 }
 
 test {

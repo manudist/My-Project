@@ -1,15 +1,11 @@
-package com.mtm.RestWS.service;
+package com.NewWs.NewWs.service;
 
-
-import com.mtm.library.model.Author;
-import com.mtm.RestWS.repository.AuthorRepository;
-
+import com.Model.model.Author;
+import com.NewWs.NewWs.repository.AuthorRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,10 +16,6 @@ public class AuthorService {
 
     @Autowired
     private AuthorRepository authorRepository;
-
-    public Collection<Author> getAuthorFromPlace(String birthplace) {
-        return authorRepository.getAuthorFromPlace(birthplace);
-    }
 
     public List<Author> getAuthorList() {
         return authorRepository.findAll();
@@ -38,4 +30,3 @@ public class AuthorService {
         return authorRepository.save(authorToBeSaved);
     }
 }
-
