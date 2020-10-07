@@ -25,7 +25,7 @@ public class AuthorController {
         logger.info("getAuthorList");
         return authorService.getAuthorList();
     }
-
+    @CrossOrigin
     @PostMapping
     public Author createAuthor(@RequestBody Author authorToCreate) {
         logger.info("createAuthor");
