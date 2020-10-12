@@ -17,13 +17,13 @@ public class ReaderController {
 
     @Autowired
     private ReaderService readerService;
-
+    @CrossOrigin
     @GetMapping
     public List<Reader> getReaderList() {
         logger.info("getReaderList");
         return readerService.getReaderList();
     }
-
+    @CrossOrigin
     @PostMapping
     public Reader createReader(@RequestBody Reader readerToCreate) {
         logger.info("createReader");

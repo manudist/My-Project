@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="../js/book.js"></script>
+    <title>Creazione libro</title>
+  </head>
+  <body>
+    <h1>Tabella Libri</h1>
+
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Creation Date
+                </th>
+                <th>
+                    Modification Date
+                </th>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Author Name
+                </th>
+            </tr>
+        </thead>
+        <tbody id= "bookTableBody"></tbody>
+    </table>
+    <br>
+    <br>
+    <h1>Creazione Autore</h1>
+
+    <form onsubmit="createBook(event)">
+        <div>
+            <label>
+            Author
+            </label>
+            <select class="form-control" id="book-author" name="bookAuthor">
+                
+            </select>
+        </div>
+        
+        <div>
+            <label for="book-title"> 
+                Title
+            </label>
+            <input type="text" class="form-control" placeholder="Title" id="book-title" name="bookTitle">
+        </div>
+        <button type="submit" class="btn-primary" id="myButton">Invio</button>
+    </form>  
+  </body>
+</html>

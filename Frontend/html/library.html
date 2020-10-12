@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/author.js"></script>
+    <script src="../js/book.js"></script>
+    <script src="../js/reader.js"></script>
+    <title></title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Tabella Autori</h1>
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Creation Date
+                            </th>
+                            <th>
+                                Modification Date
+                            </th>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                Birthdate
+                            </th>
+                            <th>
+                                Birthplace
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="authorTableBody"></tbody>
+                </table>
+            </div>
+            <div class="col">
+                <h1>Creazione Autore</h1>
+
+                <form onsubmit="createAuthor(event)">
+                    <div>
+                        <label for="author-name">
+                            Name
+                        </label>
+                        <input type="text" class="form-control" placeholder="Name" id="author-name" name="authorName">
+                    </div>
+                    <div>
+                        <label for="author-birthdate">
+                            Birthdate
+                        </label>
+                        <input type="text" class="form-control" placeholder="Birthdate" id="author-birthdate"
+                            name="authorBirthdate">
+                    </div>
+                    <div>
+                        <label for="author-birthplace">
+                            Birthplace
+                        </label>
+                        <input type="text" class="form-control" placeholder="Birthplace" id="author-birthplace"
+                            name="authorBirthplace">
+                    </div>
+                    <div>
+                        <label for="author-description">
+                            Description
+                        </label>
+                        <input type="text" class="form-control" placeholder="Description" id="author-description"
+                            name="authorDescription">
+                    </div>
+                    <button type="submit" class="btn-primary" id="myButton">Invio</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h1>Tabella Libri</h1>
+
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                Title
+                            </th>
+                            <th>
+                                Creation Date
+                            </th>
+                            <th>
+                                Modification Date
+                            </th>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                Author Name
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookTableBody"></tbody>
+                </table>
+            </div>
+            <div class="col">
+                <h1>Creazione Libro</h1>
+
+                <form onsubmit="createBook(event)">
+                    <div>
+                        <label>
+                        Author
+                        </label>
+                        <select class="form-control" id="book-author" name="bookAuthor">
+                            
+                        </select>
+                    </div>
+                    <div>
+                        <label for="book-title">
+                            Title
+                        </label>
+                        <input type="text" class="form-control" placeholder="Title" id="book-title" name="bookTitle">
+                    </div>
+                    <button type="submit" class="btn-primary" id="myButton">Invio</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col">
+                <h1>Tabella Lettori</h1>
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Creation Date
+                            </th>
+                            <th>
+                                Modification Date
+                            </th>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                Birthdate
+                            </th>
+                            <th>
+                                Birthplace
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="readerTableBody"></tbody>
+                </table>
+            </div>
+
+            <div class="col">
+                <h1>Creazione Lettore</h1>
+
+                <form onsubmit="createReader(event)">
+                    <div>
+                        <label for="reader-name">
+                            Name
+                        </label>
+                        <input type="text" class="form-control" placeholder="Name" id="reader-name" name="readerName">
+                    </div>
+                    <div>
+                        <label for="reader-birthdate">
+                            Birthdate
+                        </label>
+                        <input type="text" class="form-control" placeholder="Birthdate" id="reader-birthdate"
+                            name="readerBirthdate">
+                    </div>
+                    <div>
+                        <label for="reader-birthplace">
+                            Birthplace
+                        </label>
+                        <input type="text" class="form-control" placeholder="Birthplace" id="reader-birthplace"
+                            name="readerBirthplace">
+                    </div>
+                    <div>
+                        <label for="reader-description">
+                            Description
+                        </label>
+                        <input type="text" class="form-control" placeholder="Description" id="reader-description"
+                            name="readerDescription">
+                    </div>
+                    <button type="submit" class="btn-primary" id="myButton">Invio</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

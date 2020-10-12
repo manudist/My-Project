@@ -31,7 +31,7 @@ public class BookController {
         logger.info("getBookList");
         return bookService.getBookList();
     }
-
+    @CrossOrigin
     @PostMapping
     public Book createBook(@RequestBody Book bookToCreate){
         logger.info("createBook");
